@@ -57,5 +57,44 @@ public class ABB {
         if (atual == null) return 0;
         return numeroNosRec(atual.getEsquerda()) + 1 + numeroNosRec(atual.getDireita()); 
     }
+    public int maior () {
+        if (estaVazia()) return -1;
+        No aux = raiz;
+        while (aux.getDireita() != null) {
+            aux = aux.getDireita();
+        }
+        return aux.getInfo();
+    }
+
+    public int chamaMaiorRec () {
+        if (estaVazia()) return -1;
+        return maiorRec(raiz);
+    }
+    int maiorRec (No atual) {
+        if (atual.getDireita() == null) 
+            return atual.getInfo();
+        return maiorRec(atual.getDireita());
+    }
+    public int folhas () {
+        if (estaVazia()) return 0;
+        return folhasRec(raiz);
+    }
+
+    int folhasRec (No atual) {
+        if (atual == null) return 0;
+        if (atual.getEsquerda()==null && atual.getDireita()==null) return 1;
+        return folhasRec(atual.getEsquerda()) + folhasRec(atual.getDireita());
+    }
+
+    public int sucessor (int i) {
+        if (estaVazia()) return -1;
+
+        if (referencia(i) == null) return -1;
+    }
+    public No referencia (int i) {
+        if (raiz.getInfo() == i) return raiz;
+        if (i > raiz.getInfo()) return referenciaRec(i, raiz.getDireita());
+        return refereciaRec(i, raiz.getEsquerda());
+    }
 }
 
