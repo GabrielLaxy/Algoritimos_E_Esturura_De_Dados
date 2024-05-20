@@ -16,5 +16,13 @@ public class TesteABB {
         System.out.println("\nMaior valor: " + abb.maior());
         System.out.println("\nMaior por recursao: " + abb.chamaMaiorRec());
         System.out.println("\nTemos " + abb.folhas() + " folhas");
+
+        int result = abb.proximo(12);
+        if (result == -1){
+            System.out.println("tente mais tarde");
+        }
+        else {
+            System.out.println("proximo: " + result);
+        }
     }
 }
